@@ -77,9 +77,9 @@
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-end text-sm">
                                                 <a href="{{route('edit', $post->id)}}"
-                                                    class="bg-green-600 px-6 py-4 rounded"> Edit</a>
+                                                    class="bg-green-600 text-white px-4 py-2 rounded"> Edit</a>
                                                 <a href="{{route('delete', $post->id)}}"
-                                                    class="bg-red-600 px-6 py-4 rounded">Delete</a>
+                                                    class="bg-red-600 text-white px-4 py-2 rounded">Delete</a>
                                                 <!-- resources/views/index.blade.php -->
                                                 <a href="{{ route('post.show', $post->id) }}"
                                                     class="bg-purple-900 text-white px-4 py-2 rounded">
