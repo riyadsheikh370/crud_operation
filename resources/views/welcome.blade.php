@@ -70,12 +70,12 @@
                                     @endif
                                 </td>
                                 <td class="px-6 py-4 text-right space-x-2">
+                                    <a href="{{ route('post.show', $post->id) }}"
+                                        class="bg-purple-900 text-white px-4 py-2 rounded">Show</a>
                                     <a href="{{ route('edit', $post->id) }}"
                                         class="bg-green-600 text-white px-4 py-2 rounded">Edit</a>
                                     <a href="{{ route('delete', $post->id) }}"
                                         class="bg-red-600 text-white px-4 py-2 rounded">Delete</a>
-                                    <a href="{{ route('post.show', $post->id) }}"
-                                        class="bg-blue-600 text-white px-4 py-2 rounded">Show</a>
                                 </td>
                             </tr>
                         @endforeach
