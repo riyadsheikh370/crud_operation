@@ -23,7 +23,7 @@
         <!-- Menu Items -->
         <ul class="space-y-4">
             <li><a href="/" class="block hover:text-purple-300">Home</a></li>
-            <li><a href="/create" class="block hover:text-purple-300">Create Post</a></li>
+            <li><a href="/post/create" class="block hover:text-purple-300">Create Post</a></li>
             <li><a href="#" class="block hover:text-purple-300">Settings</a></li>
             <li><a href="#" class="block hover:text-purple-300">Logout</a></li>
         </ul>
@@ -36,7 +36,7 @@
             <a href="/" class="bg-green-600 text-white rounded py-2 px-4">Back to Home</a>
         </div>
 
-        <form method="POST" action="{{ route('store') }}" enctype="multipart/form-data" class="bg-white p-6 rounded shadow-md max-w-xl">
+        <form method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data" class="bg-white p-6 rounded shadow-md max-w-xl">
             @csrf
             <div class="flex flex-col gap-5">
 

@@ -36,8 +36,9 @@
             <a href="/" class="bg-green-600 text-white rounded py-2 px-4">Back to Home</a>
         </div>
 
-        <form method="POST" action="{{ route('update', $ourPost->id) }}" enctype="multipart/form-data" class="bg-white p-6 rounded shadow-md max-w-xl">
+        <form method="POST" action="{{ route('post.update', $ourPost->id) }}" enctype="multipart/form-data" class="bg-white p-6 rounded shadow-md max-w-xl">
             @csrf
+            @method('PUT')
             <div class="flex flex-col gap-5">
 
                 <div>

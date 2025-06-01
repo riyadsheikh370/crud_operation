@@ -26,7 +26,14 @@
                 <li><a href="/" class="block hover:text-purple-300">Home</a></li>
                 <li><a href="/create" class="block hover:text-purple-300">Create Post</a></li>
                 <li><a href="#" class="block hover:text-purple-300">Settings</a></li>
-                <li><a href="#" class="block hover:text-purple-300">Logout</a></li>
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="block hover:text-purple-300 bg-transparent border-0 p-0 m-0">
+                            Logout
+                        </button>
+                    </form>
+                </li>
             </ul>
         </aside>
 
@@ -35,7 +42,7 @@
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-purple-900 font-bold text-2xl border-b border-purple-900 pb-2">Home | Data Information
                 </h2>
-                <a href="/create" class="bg-purple-900 text-white rounded py-2 px-4">Add New Post</a>
+                <a href="{{ route('post.create') }}" class="bg-purple-900 text-white rounded py-2 px-4">Add New Post</a>
             </div>
 
             @if (session('success'))
@@ -72,10 +79,15 @@
                                 <td class="px-6 py-4 text-right space-x-2">
                                     <a href="{{ route('post.show', $post->id) }}"
                                         class="bg-purple-900 text-white px-4 py-2 rounded">Show</a>
-                                    <a href="{{ route('edit', $post->id) }}"
+                                    <a href="{{ route('post.edit', $post->id) }}"
                                         class="bg-green-600 text-white px-4 py-2 rounded">Edit</a>
-                                    <a href="{{ route('delete', $post->id) }}"
-                                        class="bg-red-600 text-white px-4 py-2 rounded">Delete</a>
+                                    <form action="{{ route('post.destroy', $post->id) }}" method="POST"
+                                        style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded"
+                                            onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -84,6 +96,7 @@
 
                 <div class="p-4">
                     {{ $posts->links() }}
+                    <!-- {!! $posts->links() !!} -->
                 </div>
             </div>
         </main>

@@ -11,8 +11,14 @@ class PostController extends Controller
     {
         return view('create');
     }
+    public function index()
+    {
+        $posts = Post::paginate(10);
+        return view('welcome', compact('posts'));  
+    }
+    
 
-    public function ourfilestore(Request $request)
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'name' => 'required',
@@ -32,16 +38,16 @@ class PostController extends Controller
 
         $post->save();
         flash()->success('Your post has been created!');
-        return redirect()->route('home');
+        return redirect()->back();
     }
 
-    public function editData($id)
+    public function edit($id)
     {
         $post = Post::findOrFail($id);
         return view('edit', ['ourPost' => $post]);
     }
 
-    public function updateData($id, Request $request)
+    public function update($id, Request $request)
     {
 
         $validated = $request->validate([
@@ -65,15 +71,14 @@ class PostController extends Controller
         return redirect()->route('home');
     }
 
-    public function deleteData($id)
+    public function destroy($id)
     {
         $post = Post::findOrFail($id);
         $post->delete();
         flash()->error('Your post has been delated!');
-        return redirect()->route('home');
-
+        return redirect()->back();
     }
-    // app/Http/Controllers/PostController.php
+    
     public function show($id)
     {
         $post = Post::findOrFail($id);
